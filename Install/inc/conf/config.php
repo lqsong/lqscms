@@ -20,9 +20,9 @@ return array(
     //显示页面调试信息
     'SHOW_PAGE_TRACE'      => false,
 
-    'TMPL_ACTION_ERROR'    => './Data/resource/system/jump.xyh', // error tpl
-    'TMPL_ACTION_SUCCESS'  => './Data/resource/system/jump.xyh', //  success tpl
-    'TMPL_EXCEPTION_FILE'  => './Data/resource/system/exception.xyh', //exception tpl
+    'TMPL_ACTION_ERROR'    => './Data/resource/system/jump.lqs', // error tpl
+    'TMPL_ACTION_SUCCESS'  => './Data/resource/system/jump.lqs', //  success tpl
+    'TMPL_EXCEPTION_FILE'  => './Data/resource/system/exception.lqs', //exception tpl
 
     //加载用户函数
     'LOAD_EXT_FILE'        => 'other',
