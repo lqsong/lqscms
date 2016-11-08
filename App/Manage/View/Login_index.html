@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理中心</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/login.css?v20161104" />
+    <script type="text/javascript" src="__DATA__/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__DATA__/static/jq_plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/login.js?v20161104"></script>
+</head>
+<body>
+	<div class="lqs-login">
+		<div class="lqs-login-form">
+			<form action="{:U('Login/login')}" method="post" id="LoginForm">
+			<div class="title">管 理 登 录</div>
+			<table width="100%">
+				<tr>
+					<td>
+<!--
+                        <input type="username"  name="username" value="用户名" onfocus="if(this.value=='用户名'){ this.value=''} " onblur="if(this.value==''){ this.value='用户名' }"   />
+-->
+                        <input type="username" placeholder="用户名"  name="username"  />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" placeholder="密 码" name="password"/>
+					</td>
+				</tr>
+				<tr>
+				  <td>
+						<input type="code" placeholder="验证码" name="code" autocomplete="off" /></td>
+				</tr>
+				<tr>
+				  	<td>
+						<img src="{:U('Login/verify',array('id' => 'a_login_1'))}" data-url="{:U('Login/verify',array('id' => 'a_login_1'))}" align="absmiddle" id="vcode"  class="vcode" />
+					</td>
+				</tr>
+				<tr>
+					<td><button type="submit">登　　录</button></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</div>
+
+</body>
+</html>

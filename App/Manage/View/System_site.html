@@ -1,0 +1,73 @@
+<extend name="Public:base" />
+<block name="header_js">
+	
+</block>
+
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4 class="page-header"><em class="glyphicon glyphicon-home"></em>
+			网站设置   
+		    </h4>
+		</div>
+		
+	</div>
+	<div class="row margin-botton">
+        <div class="col-md-12 text-right">
+            <div class="btn-group btn-group-md">
+                 <button class="btn btn-default" type="button" onclick="goUrl('{:U('index')}')"><em class="glyphicon glyphicon-th-list"></em> 配置项管理</button>
+            </div>
+        </div>
+    </div>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div>
+			
+				<!-- Nav tabs -->			
+				<ul class="nav nav-tabs" role="tablist">
+					<foreach name='configgroup' item='v'>
+					<li role="presentation" <if condition="$key eq 1">class="active"</if>>
+						<a href="#tabConent{$key}" aria-controls="tabConent{$key}" role="tab" data-toggle="tab">{$v}</a>
+					</li>
+					</foreach>
+				</ul>
+
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('site')}">
+					<!-- Tab panes -->			
+					<div class="tab-content" style="margin-top:20px;">
+						<foreach name='vlist' item='v'>
+						<div role="tabpanel" <if condition="$key eq 1">class="tab-pane active"<else/>class="tab-pane"</if> id="tabConent{$key}">
+							<foreach name='v' item='config'>	
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">{$config.title}</label>
+								<div class="col-sm-9">
+									{:get_element_html("config[".$config['name']."]",$config['typeid'], $config['tvalue'], $config['value'])}								
+								</div>
+							</div>
+							</foreach>							
+						</div>
+						</foreach>
+
+					</div>
+					<div class="row">
+						<div class="col-sm-offset-2 col-sm-9">
+							<div class="btn-group">
+								<button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-saved"></i>
+									保存
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+	
+		</div>
+	</div>
+
+		
+
+
+</block>

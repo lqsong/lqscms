@@ -1,0 +1,84 @@
+<extend name="Public:base" />
+
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4 class="page-header"><em class="glyphicon glyphicon-home"></em>
+			<empty name="uid">添加用户<else/>修改用户</empty>
+		    </h4>
+		</div>
+		
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="<if condition='$uid'>{:U('editUser')}<else/>{:U('addUser')}</if>">	
+					
+					<div class="form-group">
+						<label for="inputUsername" class="col-sm-2 control-label">用户名</label>
+						<div class="col-sm-9">
+							<input type="text" name="username" id="inputUsername" value="{$user.username}" class="form-control" placeholder="用户名" required="required" />		
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-9">
+							<input type="password" name="password" id="inputPassword" value="{$user.password}" class="form-control" <if condition='$uid'>placeholder="不修改请留空"<else/>placeholder="密码" required="required"</if> />		
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputRealname" class="col-sm-2 control-label">真实姓名</label>
+						<div class="col-sm-9">
+							<input type="text" name="realname" id="inputRealname" value="{$user.realname}" class="form-control" placeholder="真实姓名" />		
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">所属权限组</label>
+						<div class="col-sm-9">
+							<select name="role_id[]" class="form-control">
+								<option value="0">请选择用户组</option>
+								<foreach name='role' item='v'>
+								<option value="{$v.id}" <if condition="$v['id'] eq $userRote[0]">selected="selected"</if>>{$v.name}</option>
+								</foreach>
+							</select>	
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">锁定</label>
+						<div class="col-sm-9">
+							<label class="radio-inline">
+							<input type="radio" name="islock" value="1" <if condition="$user['islock'] eq 1">checked="checked"</if> />是</label>
+							<label class="radio-inline">
+							<input type="radio" name="islock" value="0" <if condition="$user['islock'] eq 0">checked="checked"</if> />否</label>
+						</div>
+					</div>
+
+					<div class="row margin-botton-large">
+						<div class="col-sm-offset-2 col-sm-9">
+							<if condition="$uid">
+							<input type="hidden" name="uid" value="{$uid}" />
+							</if>
+							<div class="btn-group">							
+								<button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-saved"></i>
+									保存
+								</button>
+								<button type="button" onclick="goUrl('{:U('index')}')" class="btn btn-default"> <i class="glyphicon glyphicon-chevron-left"></i>
+									返回
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+	
+		</div>
+	</div>
+
+		
+
+
+</block>

@@ -1,0 +1,62 @@
+<extend name="Public:base" />
+
+<block name="content">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-info">
+				<!-- Default panel contents -->		
+				<div class="panel-heading"><em class="glyphicon glyphicon-star"></em> 我的个人信息</div>
+				<div class="panel-body">
+					<p>
+						您好，{$Think.session.yang_adm_username}
+						<br/>		
+						上次登录时间：{$Think.session.yang_adm_logintime}
+						<br/>		
+						上次登录IP：{$Think.session.yang_adm_loginip}
+						<br/>		
+					</p>
+				</div>
+			</div>
+
+
+			<div class="panel panel-success">
+				<!-- Default panel contents -->		
+				<div class="panel-heading">系统信息</div>
+				<div class="panel-body">
+					操作系统：{$os} <br />
+					服务器软件：{$software}<br />
+					MySQL 版本：{$mysql_ver}<br />
+					上传文件：{$environment_upload}<br />	
+				</div>
+			</div>
+			
+
+
+		</div>
+
+		<div class="col-md-6">
+			<div class="panel panel-warning">
+				<!-- Default panel contents -->		
+				<div class="panel-heading">安全提示</div>
+				<div class="panel-body">
+					<p>
+						1.取消uploads目录的执行权限！
+						<br/>		
+
+					</p>
+				</div>
+			</div>
+
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+</block>
+

@@ -1,0 +1,57 @@
+<extend name="Public:base" />
+<block name="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4 class="page-header"><em class="glyphicon glyphicon-home"></em>
+			添加数据元
+		    </h4>
+		</div>
+		
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+
+				<form method='post' class="form-horizontal" id="form_do" name="form_do" action="{:U('add')}">					
+					<div class="form-group">
+						<label for="inputName" class="col-sm-2 control-label">名称标识</label>
+						<div class="col-sm-9">
+							<input type="text" name="name" id="inputName" class="form-control" placeholder="名称标识由字母、数字和下划线组成,不能重复" required="required" />		
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputValue" class="col-sm-2 control-label">值</label>
+						<div class="col-sm-9">
+							<textarea name="value" id="inputValue" class="form-control" rows="5"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputGroupid" class="col-sm-2 control-label">分组</label>
+						<div class="col-sm-9">
+							<input type="text" name="groupid" id="inputGroupid" value="0" class="form-control" placeholder="分组" />
+						</div>
+					</div>					
+
+					<div class="row margin-botton-large">
+						<div class="col-sm-offset-2 col-sm-9">
+							<div class="btn-group">							
+								<button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-saved"></i>
+									保存
+								</button>
+								<button type="button" onclick="goUrl('{:U('index')}')" class="btn btn-default"> <i class="glyphicon glyphicon-chevron-left"></i>
+									返回
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+	
+		</div>
+	</div>
+
+		
+
+
+</block>

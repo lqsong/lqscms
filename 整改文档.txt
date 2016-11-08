@@ -1,0 +1,16 @@
+一、app/manage/view/public/js/login.js
+
+    1、第7行
+
+二、app/manage/view/public_main.html
+   
+    1、删除xyh api js  （底部）
+
+三、app/manage/controller/SystemController.class.php
+
+    1、修改网站配置：
+           
+       原：$vlist = M("config")->order('groupid,sort')->select();
+       改：$vlist = M("config")->where('sort>0')->order('groupid,sort')->select();
+
+       增加条件查询，控制隐藏显示，排序设置0时为隐藏

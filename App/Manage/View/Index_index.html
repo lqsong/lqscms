@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台管理</title>
+    <script type="text/javascript" src="__DATA__/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="__DATA__/static/jq_plugins/nicescroll/3.6.8/jquery.nicescroll.min.js"></script>
+    <script src="__PUBLIC__/js/frame.js?v201625" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" src="__DATA__/static/jq_plugins/layer/layer.js"></script>
+    <link href="__PUBLIC__/css/frame.css" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 6]>
+    <script src="__PUBLIC__/js/DD_belatedPNG_0.0.8a-min.js" language="javascript" type="text/javascript"></script>
+    <script>
+      DD_belatedPNG.fix('.nav ul li a,.top_link ul li,background');   /* string argument can be any CSS selector */
+    </script>
+    <![endif]-->
+</head>
+<body class="showmenu">
+<div class="pagemask"></div>
+<iframe class="iframemask"></iframe>
+<div class="head">
+    <div class="top_logo">
+        <a href="{:C('CFG_WEBURL')}" target="_blank"><img src="__PUBLIC__/images/main/logo.png" width="153" /> </a>
+    </div>
+
+    <div class="nav pull-left">
+        <ul>
+            <li id="menu_menu"><a id="togglemenu"  href="javascript:void (null);"    data-title="隐藏菜单"></a></li>
+        </ul>
+    </div>
+
+
+     <div class="nav" id="nav">
+      <ul>
+      	<foreach name='menu' key='k' item='v'>
+		  <li id="menu_{$k}"><a <empty name='k'>class="thisclass"</empty> href="javascript:void (null);" _for="left_menu_{$k}" data-title="{$v.name}"></a></li>
+		</foreach>
+          <li id="menu_exit"><a href="{:U('Login/logout')}"  target="_top"  data-title="退出"></a></li>
+      </ul>
+    </div>
+
+    <!--
+     <div class="top_link">
+      <ul>
+        <li id="i_self">{$Think.session.yang_adm_username}</li>
+		<li id="i_hide_menu"><a href="#" id="togglemenu">隐藏菜单</a></li>
+        <li id="i_home"><a href="{:C('CFG_WEBURL')}" target="_blank">首页</a></li> 
+
+      </ul>
+    </div>
+    -->
+</div>
+<!-- header end -->
+
+<div class="left">
+<div class="menu" id="menu" data-url="{:U('Index/getParentCate')}">
+<foreach name='menu' key='k' item='v'>
+<div id="items_left_menu_{$k}">
+	<volist name='v["child"]' key='k2' id='v2'>
+	<dl id="dl_items_{$k2}_{$k}">
+		<dt>{$v2.name}</dt>
+		<dd>
+		<ul>
+
+      <if condition="$v2['id'] eq 7">
+      <volist name='qmenu' key='k3' id='v3'>
+      <li><a href="{:U($v3['module'].'/'.$v3['action'].'', $v3['parameter'])}" target="main">{$v3.name}</a></li>
+      </volist>  
+      <else/>
+      <volist name='v2["child"]' key='k3' id='v3'>
+      <li><a href="{:U($v3['module'].'/'.$v3['action'].'', $v3['parameter'])}" target="main">{$v3.name}</a></li>
+      </volist>
+
+      </if>
+		</ul>
+		</dd>
+	</dl>
+	</volist>	
+	
+</div>
+</foreach>
+<!-- Item End -->
+
+
+</div>
+</div>
+<!-- left end -->
+
+<div class="right">
+	<div class="rightContent">
+	<iframe id="main" name="main" frameborder="0" scrolling="yes" src="{:U('Public/main')}" ></iframe>
+	</div>    
+</div>
+<!-- right end -->
+
+
+</body>
+</html>
